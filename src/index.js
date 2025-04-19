@@ -1,1 +1,1 @@
-console.log('Hello');
+document.title = 'TemplateJS';
