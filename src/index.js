@@ -1,4 +1,3 @@
-document.title = 'TemplateJS';
 const app = document.createElement('div');
-app.innerHTML = 'TemplateJS';
+app.innerHTML = 'Welcome to TemplateJS!';
 document.body.appendChild(app);
