@@ -1,12 +1,12 @@
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
+import { merge } from 'webpack-merge';
+import common from './webpack.common.mjs';
 
-module.exports = merge(common, {
+export default merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     historyApiFallback: true,
-    static: './dist',
+    static: './build',
     hot: true,
     host: '0.0.0.0',
     port: 8080,

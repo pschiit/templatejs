@@ -1,10 +1,10 @@
-const path = require('path');
-const packageJson = require('./package.json');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import packageJson from './package.json' with {type: "json"};
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const DEFAULT_PATH = 'src';
 
-module.exports = {
+export default {
     entry: `./${DEFAULT_PATH}/index.js`,
     plugins: [
         new HtmlWebpackPlugin({
@@ -13,14 +13,14 @@ module.exports = {
     ],
     output: {
         filename: 'app.[contenthash].js',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(import.meta.dirname, 'build'),
         clean: true,
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                include: path.resolve(__dirname, DEFAULT_PATH),
+                include: path.resolve(import.meta.dirname, DEFAULT_PATH),
                 use: {
                     loader: "babel-loader",
                     options: {
@@ -30,22 +30,22 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                include: path.resolve(__dirname, DEFAULT_PATH),
+                include: path.resolve(import.meta.dirname, DEFAULT_PATH),
                 use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.json$/i,
-                include: path.resolve(__dirname, DEFAULT_PATH),
+                include: path.resolve(import.meta.dirname, DEFAULT_PATH),
                 type: 'asset/source',
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                include: path.resolve(__dirname, DEFAULT_PATH),
+                include: path.resolve(import.meta.dirname, DEFAULT_PATH),
                 type: 'asset/resource',
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                include: path.resolve(__dirname, DEFAULT_PATH),
+                include: path.resolve(import.meta.dirname, DEFAULT_PATH),
                 type: 'asset/resource',
             },
         ]
